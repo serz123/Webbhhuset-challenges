@@ -1,0 +1,22 @@
+{
+  "name": "level1",
+  "version": "1.0.0",
+  "description": "Implements a very-secure-hashing-function",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Vanja Maric",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.23.3",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0"
+  }
+}

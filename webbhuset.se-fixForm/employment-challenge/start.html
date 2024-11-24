@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Challenge: Level 1</title>
+    <meta name="robots" content="noindex,nofollow"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;700&family=Hepta+Slab:wght@400;700&display=swap"/>
+    <style>
+        html, body {
+            font-family: "Barlow", sans-serif;
+            font-size: 18px;
+            background: #212121;
+            color: #EEE;
+            line-height: 1.41;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        :root {
+            --page-width: 960px;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        header {
+            padding: 1em;
+            text-align: center;
+        }
+        footer {
+            padding: 0.2em;
+            text-align: center;
+        }
+        header::after {
+            background: linear-gradient(135deg,#f1ac13,#fd00d9);
+            height: 1px;
+            content: "";
+            width: 100%;
+            display: block;
+            margin-top: 6px;
+        }
+        main {
+            flex-grow: 1;
+            padding: 1em max(1em, calc(50vw - var(--page-width) / 2));
+        }
+        code {
+            font-family: "Source Code Pro", monospace;
+            font-weight: 300;
+            background: #000;
+            color: #FFF;
+            display: inline-block;
+            border: solid 1px #444;
+            padding: 0 5px;
+            border-radius: 3px;
+            max-width: 100%;
+        }
+        code.block {
+            white-space: pre;
+            background: #000;
+            display: block;
+            padding: 0.5em;
+            line-height: 1.5;
+        }
+        h1, h2, h3 {
+            font-weight: 300;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        * + h1, * + h2, * + h3 {
+            margin-top: 1.5em;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        a, a:visited {
+            text-decoration: none;
+            color: rgb(253, 0, 217);
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        li + li {
+            margin-top: 0.5em;
+        }
+
+        input {
+            background: #111;
+            font-size: 18px;
+            padding: 5px;
+            color: #FFF;
+            font-family: "Source Code Pro", monospace;
+            border: #333;
+        }
+        button {
+            appearance: none;
+            border: none;
+            background: none;
+            border-radius: 4px;
+            color: #FFF;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0 1.1em;
+            line-height: 0;
+        }
+        .grow {
+            flex-grow: 1;
+        }
+        .border-gradient:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 6px;
+            padding: 1px;
+            background: linear-gradient(135deg,#f1ac13,#fd00d9);
+            mask: linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            -webkit-mask-composite: source-out;
+            opacity: .7;
+        }
+        .border-gradient:hover:after {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img class="logo" src="./asset/logo.svg" width="183" height="19" />
+    </header>
+    <main>
+        <h1>Welcome</h1>
+<p>Hi and welcome to our employment challenge.</p>
+<p>We hope that you will enjoy the challenge and maybe learn something as well.
+The challenge is divided into several levels, no one knows how many exactly.
+Completing one level will lead you to the next. Complete as many levels as you like.
+You can use any programming language you like to solve the puzzles.</p>
+<p>When you are done, please send your solutions (incuding the code) to jobb@webbhuset.se to participate.</p>
+
+<h2>Let's get started</h2>
+<p>You have probably heard that it is a bad idea to store user passwords unencrypted in a database. Oops! Looks like we forgot that part. Maybe you can help us fix this embarrassing misstake?</p>
+<p>First step is to implement a very-secure-hashing-function. We all know it is better to roll your own crypto functions instead of trusting libraries.</p>
+<p>To make password hashes more secure we will combine the powers of the <a href="https://en.wikipedia.org/wiki/SHA-1" target="_blank">SHA-1</a> and <a href="https://en.wikipedia.org/wiki/MD5" target="_blank">MD5</a> hash functions.</p>
+<p>Here is the algorithm:</p>
+<ol>
+<li>Start by hashing the password string using <b>SHA-1</b>. For example, hasing an empty string using <b>SHA-1</b> will result in the hexadecimal string <code>da39a3ee5e6b4b0d3255bfef95601890afd80709</code>.</li>
+<li><p>To get the next string we will use the previous hash as input and apply it to either the <b>SHA-1</b> or <b>MD5</b> hasing function. 
+For example, applying the previous hash to <b>SHA-1</b> results in <code>10a34637ad661d98ba3344717656fcc76209c2f8</code>. 
+Applying it to <b>MD5</b> will result in <code>0144712dd81be0c3d9724f5e56ce6685</code>.</p>
+<p>To know which algorithm to select we take the first and last letter of the input hash and concatenate them to create a 2-letter hexadecimal word. In the above example, concatenating <code>d</code> and <code>9</code> results in the word <code>d9</code>.
+This word can be converted to a numeric value between 0 and 255.
+If this value is lesser than 128, use <b>SHA-1</b>. If it is greater or equal to 128, use <b>MD5</b>.
+</p>
+<p>In our example, <code>d9</code> has a numeric value of 217 which is greater than 128 so we use <b>MD5</b>.
+</p>
+</li>
+<li>
+<p>To get the final hash, repeat step number two 100 times. The 100th hash is our very securely hashed password.</p>
+<h2>Examples</h2>
+<ul>
+<li>The empty string will be stored as <code>dc0b0791d6b6a4d9642260bc3fa037bc1e3b6d60</code>.</li>
+<li><code>password1</code> will be stored as <code>70510d02bcff092061212824b494b79034d3cbe4</code>.</li>
+</ul>
+</li>
+</ol>
+
+<h2>Your answer</h2>
+<p>Hash the password <code>Password123!</code> with your very-secure-hashing-function and submit the result below.</p>
+<div class="submit-password">
+<input id="password-input" class="grow" type="text" placeholder="Enter password hash here"/>
+<button class="border-gradient" onclick="submitPassword(this)">Submit</button>
+</div>
+<p id="error-log" style="color:red;"></p>
+<style>
+.error-log {
+    color: red;
+    font-family: "Source Code Pro", monospace;
+}
+.submit-password {
+    margin: 1em 0;
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+}
+</style>
+<script>
+ window.onerror = function() {
+    document.getElementById('error-log').innerText = 'Hmm, an error occured. If only there was a programmer nearby that could fix the broken form...';
+}
+function submitPassword(el) {
+    var passwordInput = document.getElementById('password-input');
+    var secretPassword = passwordInput.value;
+
+    var link = window.location.href.replace(/[^/]+$/, secretPassword);
+
+    fetch(link)
+        .then(function(result) {
+            if (!result.ok) {
+                return alert('That is not the correct answer');
+            }
+
+            window.location.href = link;
+        });
+}
+</script>
+    </main>
+    <footer>© Webbhuset 2024</footer>
+</body>
+</html>
