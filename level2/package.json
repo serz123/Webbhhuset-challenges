@@ -1,19 +1,20 @@
 {
-  "name": "level1",
+  "name": "level2",
   "version": "1.0.0",
-  "description": "Implements a very-secure-hashing-function",
+  "description": "Check passwords",
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
     "test": "jest"
   },
-  "keywords": [],
   "author": "Vanja Maric",
   "license": "MIT",
   "type": "module",
   "dependencies": {
     "crypto": "^1.0.1",
-    "level1": "file:"
+    "fs-extra": "^11.2.0",
+    "level2": "file:",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.23.3",
